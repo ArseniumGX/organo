@@ -1,7 +1,7 @@
 import style from "./Form.module.scss";
 import { TextField } from "../";
 
-export function Form({ children }) {
+export function Form() {
 	return (
 		<session className={style.form_container}>
 			<form>
