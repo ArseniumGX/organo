@@ -1,10 +1,18 @@
-import { Banner, TextField, Form } from "./components";
+import { useState } from "react";
+import { Banner, Form } from "./components";
 
 function App() {
+	const [colabs, setColabs] = useState([]);
+
+	const onSubmitNewColab = (colab) => {
+		console.info(colab);
+		setColabs([...colabs, colab]);
+	};
+
 	return (
 		<div className="App">
 			<Banner />
-			<Form />
+			<Form onSubmit={(colab) => onSubmitNewColab(colab)} />
 		</div>
 	);
 }
