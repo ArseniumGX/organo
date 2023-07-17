@@ -1,0 +1,25 @@
+.subtitle {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+
+  h2 {
+    color: #6278f7;
+    text-align: center;
+    font-weight: 400;
+    line-height: 72px;
+    font-size: 40px;
+  }
+
+  h2::after {
+    content: "";
+    width: 64px;
+    height: 4px;
+    background-color: #6278f7;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    border-radius: 4px;
+  }
+}
