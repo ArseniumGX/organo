@@ -1,0 +1,56 @@
+.footer {
+  background-color: #6278f7;
+  background-image: url("/images/fundo.png");
+  background-position: top;
+  height: 230px;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 0;
+
+  &__main {
+    padding: 24px 0;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+
+    &__socials {
+      display: inline-block;
+
+      a {
+        font-size: 24px;
+        margin: 0 8px;
+        color: #fff;
+      }
+    }
+
+    &__logo {
+      margin: 0 8px;
+    }
+
+    &__mark {
+      color: #fff;
+      font-family: "Montserrat", sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      text-align: right;
+
+      code {
+        font-family: monospace;
+      }
+    }
+  }
+
+  &__alura {
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+
+    a {
+      color: inherit;
+    }
+  }
+}

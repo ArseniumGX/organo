@@ -1,5 +1,6 @@
 import style from "./Time.module.scss";
-import { Card } from "../Card/Card";
+import { Card } from "../";
+import { v4 as uuid } from "uuid";
 
 export function Time(props) {
   return (
@@ -12,8 +13,8 @@ export function Time(props) {
         <div className={style.time__cards}>
           {props.colabs.map((colab) => (
             <Card
-              key={colab.id}
-              name={colab.name}
+              key={uuid()}
+              name={colab.nome}
               image={colab.imagem}
               cargo={colab.cargo}
               bgStyle={props.primaryColor}

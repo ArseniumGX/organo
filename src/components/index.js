@@ -6,3 +6,4 @@ export { DropList } from "./DropList/DropList";
 export { Time } from "./Time/Time";
 export { Subtitle } from "./Subtitle/Subtitle";
 export { Card } from "./Card/Card";
+export { Footer } from "./Footer/Footer";
