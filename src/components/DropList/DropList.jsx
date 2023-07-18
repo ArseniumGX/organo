@@ -11,6 +11,7 @@ export function DropList(props) {
         name={props.name}
         required={props.required}
       >
+        <option value=""></option>
         {props.itens.map((item) => (
           <option key={item.id}>{item.name}</option>
         ))}

@@ -3,7 +3,6 @@ import { Banner, Form, Time, Subtitle, Footer } from "./components";
 
 function App() {
   const times = [
-    { id: 0, name: "" },
     {
       id: 1,
       name: "Programação",
