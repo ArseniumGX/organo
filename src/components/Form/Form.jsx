@@ -1,6 +1,7 @@
 import style from "./Form.module.scss";
 import { TextField, Button, DropList } from "../";
 import { useState } from "react";
+import { v4 as uuid } from "uuid";
 
 export function Form(props) {
   const [nome, setNome] = useState("");
@@ -10,11 +11,11 @@ export function Form(props) {
 
   const onSave = (e) => {
     e.preventDefault();
-    props.onSubmit({ nome, cargo, imagem, time });
-    onReset();
+    props.onSubmit({ id: uuid(), nome, cargo, imagem, time });
+    resetForm();
   };
 
-  const onReset = () => {
+  const resetForm = () => {
     setNome("");
     setCargo("");
     setImagem("");
@@ -59,6 +60,8 @@ export function Form(props) {
           name="time"
           label="Time"
           itens={props.times}
+          modalVisibilidade={props.modalVisibilidade}
+          modalOpen={props.modalOpen}
         />
         <Button>
           <p>Criar card</p>
