@@ -2,50 +2,43 @@ import { useState } from "react";
 import { Banner, Form, Time, Subtitle, Footer } from "./components";
 
 function App() {
-  const times = [
+  const [times, setTimes] = useState([
     {
       id: 1,
       name: "Programação",
-      primaryColor: "#57C278",
-      secondaryColor: "#D9F7E9"
+      color: "#57C278"
     },
     {
       id: 2,
       name: "Front End",
-      primaryColor: "#82CFFA",
-      secondaryColor: "#E8F8FF"
+      color: "#82CFFA"
     },
     {
       id: 3,
       name: "Data Science",
-      primaryColor: "#A6D157",
-      secondaryColor: "#F0F8E2"
+      color: "#A6D157"
     },
     {
       id: 5,
       name: "DevOps",
-      primaryColor: "#E06B69",
-      secondaryColor: "#FDE7E8"
+      color: "#E06B69"
     },
     {
       id: 6,
       name: "UX e Design",
-      primaryColor: "#DB6EBF",
-      secondaryColor: "#FAE9F5"
+      color: "#DB6EBF"
     },
     {
       id: 7,
       name: "Mobile",
-      primaryColor: "#FFBA05",
-      secondaryColor: "#FFF5D9"
+      color: "#FFBA05"
     },
     {
       id: 8,
       name: "Inovação e Gestão",
-      primaryColor: "#FF8A29",
-      secondaryColor: "#FFEEDF"
+      color: "#FF8A29"
     }
-  ];
+  ]);
 
   const [colabs, setColabs] = useState([]);
 
@@ -57,6 +50,17 @@ function App() {
     console.info(colab);
   };
 
+  const changeColors = (color, timeName) => {
+    setTimes(
+      times.map((time) => {
+        if (time.name === timeName) {
+          time.color = color;
+        }
+        return time;
+      })
+    );
+  };
+
   return (
     <div className="App">
       <Banner />
@@ -66,10 +70,10 @@ function App() {
         <Time
           key={time.id}
           name={time.name}
-          primaryColor={time.primaryColor}
-          secondaryColor={time.secondaryColor}
+          color={time.color}
           colabs={colabs.filter((colab) => colab.time === time.name)}
           onDelete={deleteColab}
+          onChangeColor={changeColors}
         />
       ))}
       <Footer />
