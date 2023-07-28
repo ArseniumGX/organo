@@ -40,14 +40,14 @@ function App() {
     }
   ]);
 
-  const [colabs, setColabs] = useState([]);
+  const [colaboradores, setcolaboradores] = useState([]);
 
-  const onSubmitNewColab = (colab) => {
-    setColabs([...colabs, colab]);
+  const onSubmitNewColaborador = (colaborador) => {
+    setcolaboradores([...colaboradores, colaborador]);
   };
 
-  const deleteColab = (colab) => {
-    console.info(colab);
+  const deleteColaborador = (colaborador) => {
+    console.info(colaborador);
   };
 
   const changeColors = (color, timeName) => {
@@ -64,15 +64,20 @@ function App() {
   return (
     <div className="App">
       <Banner />
-      <Form onSubmit={(colab) => onSubmitNewColab(colab)} times={times} />
+      <Form
+        onSubmit={(colaborador) => onSubmitNewColaborador(colaborador)}
+        times={times}
+      />
       <Subtitle />
       {times.map((time) => (
         <Time
           key={time.id}
-          name={time.name}
+          timeName={time.name}
           color={time.color}
-          colabs={colabs.filter((colab) => colab.time === time.name)}
-          onDelete={deleteColab}
+          colaboradores={colaboradores.filter(
+            (colaborador) => colaborador.time === time.name
+          )}
+          onDelete={deleteColaborador}
           onChangeColor={changeColors}
         />
       ))}
