@@ -53,6 +53,10 @@ function App() {
     setColabs([...colabs, colab]);
   };
 
+  const deleteColab = (colab) => {
+    console.info(colab);
+  };
+
   return (
     <div className="App">
       <Banner />
@@ -65,6 +69,7 @@ function App() {
           primaryColor={time.primaryColor}
           secondaryColor={time.secondaryColor}
           colabs={colabs.filter((colab) => colab.time === time.name)}
+          onDelete={deleteColab}
         />
       ))}
       <Footer />

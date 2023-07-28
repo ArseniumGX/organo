@@ -18,6 +18,7 @@ export function Time(props) {
               image={colab.imagem}
               cargo={colab.cargo}
               bgStyle={props.primaryColor}
+              onDelete={props.onDelete}
             />
           ))}
         </div>

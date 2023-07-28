@@ -1,7 +1,18 @@
 .card {
+  position: relative;
   width: 280px;
   text-align: center;
   margin: 12px;
+
+  &__btndel {
+    position: absolute;
+    top: -11px;
+    right: -11px;
+    color: var(--bg-card-color);
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+  }
 
   &__header {
     background-color: var(--bg-card-color);

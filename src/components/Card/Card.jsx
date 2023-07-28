@@ -1,8 +1,14 @@
 import style from "./Card.module.scss";
+import { CgCloseO } from "react-icons/cg";
 
-export function Card({ image, name, cargo, bgStyle }) {
+export function Card({ image, name, cargo, bgStyle, onDelete }) {
   return (
     <div className={style.card}>
+      <CgCloseO
+        className={style.card__btndel}
+        style={{ "--bg-card-color": bgStyle }}
+        onClick={onDelete}
+      />
       <div
         className={style.card__header}
         style={{ "--bg-card-color": bgStyle }}
