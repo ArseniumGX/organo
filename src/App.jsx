@@ -60,6 +60,10 @@ function App() {
     setcolaboradores([...colaboradores, colaborador]);
   };
 
+  const onSumitNewTime = (time) => {
+    setTimes([...times, { id: uuid(), ...time }]);
+  };
+
   const deleteColaborador = (id) => {
     setcolaboradores(
       colaboradores.filter((colaborador) => id !== colaborador.id)
@@ -78,13 +82,14 @@ function App() {
   };
 
   useEffect(() => {
-    console.info({ colaboradores, modalVisibilidade });
+    console.info({ colaboradores, modalVisibilidade, times });
   });
 
   return (
     <div className="App">
       <Banner />
       <ModalNewTime
+        onSumitNewTime={onSumitNewTime}
         modalOpen={modalOpen}
         visibilidadeModal={modalVisibilidade}
       />
