@@ -6,16 +6,13 @@ import {
   Time,
   Subtitle,
   Footer,
-  ModalNewTime
+  Modal,
+  NewTime
 } from "./components";
 
 function App() {
+  const [acao, setAcao] = useState("");
   const [modalVisibilidade, setModalVisibilidade] = useState("none");
-
-  const modalOpen = () => {
-    setModalVisibilidade(modalVisibilidade === "none" ? "flex" : "none");
-  };
-
   const [times, setTimes] = useState([
     {
       id: uuid(),
@@ -53,19 +50,22 @@ function App() {
       color: "#FF8A29"
     }
   ]);
+  const [colaboradores, setColaboradores] = useState([]);
 
-  const [colaboradores, setcolaboradores] = useState([]);
-
-  const onSubmitNewColaborador = (colaborador) => {
-    setcolaboradores([...colaboradores, colaborador]);
+  const modalOpenOrClose = () => {
+    setModalVisibilidade(modalVisibilidade === "none" ? "flex" : "none");
   };
 
-  const onSumitNewTime = (time) => {
+  const addColaborador = (colaborador) => {
+    setColaboradores([...colaboradores, colaborador]);
+  };
+
+  const addTime = (time) => {
     setTimes([...times, { id: uuid(), ...time }]);
   };
 
   const deleteColaborador = (id) => {
-    setcolaboradores(
+    setColaboradores(
       colaboradores.filter((colaborador) => id !== colaborador.id)
     );
   };
@@ -82,22 +82,36 @@ function App() {
   };
 
   useEffect(() => {
-    console.info({ colaboradores, modalVisibilidade, times });
-  });
+    colaboradores.length === 0 &&
+      Array.isArray(JSON.parse(localStorage.getItem("colaboradores"))) &&
+      JSON.parse(localStorage.getItem("colaboradores")).length > 0 &&
+      setColaboradores(JSON.parse(localStorage.getItem("colaboradores")));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("colaboradores", JSON.stringify(colaboradores));
+  }, [colaboradores.length, times.length]);
 
   return (
     <div className="App">
       <Banner />
-      <ModalNewTime
-        onSumitNewTime={onSumitNewTime}
-        modalOpen={modalOpen}
+      <Modal
+        modalOpenOrClose={modalOpenOrClose}
         visibilidadeModal={modalVisibilidade}
-      />
+      >
+        {acao === "NOVO" && (
+          <NewTime
+            onSumitNewTime={addTime}
+            modalOpenOrClose={modalOpenOrClose}
+          />
+        )}
+      </Modal>
       <Form
-        onSubmit={(colaborador) => onSubmitNewColaborador(colaborador)}
+        onSubmit={(colaborador) => addColaborador(colaborador)}
         times={times}
-        modalOpen={modalOpen}
+        modalOpenOrClose={modalOpenOrClose}
         modalVisibilidade={modalVisibilidade}
+        acao={setAcao}
       />
       <Subtitle />
       {times.map((time) => (

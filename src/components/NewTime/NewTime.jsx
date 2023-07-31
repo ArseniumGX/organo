@@ -1,10 +1,8 @@
-import { useState } from "react";
-import { CgCloseO } from "react-icons/cg";
-import { v4 as uuid } from "uuid";
-import style from "./ModalNewTime.module.scss";
+import style from "./NewTime.module.scss";
 import { TextField, Button } from "../";
+import { useState } from "react";
 
-export function ModalNewTime({ modalOpen, visibilidadeModal, onSumitNewTime }) {
+export function NewTime({ onSumitNewTime, modalOpenOrClose }) {
   const [time, setTime] = useState({
     name: "",
     color: "#000000"
@@ -13,16 +11,12 @@ export function ModalNewTime({ modalOpen, visibilidadeModal, onSumitNewTime }) {
   const onSubmitTime = (e) => {
     e.preventDefault();
     onSumitNewTime(time);
-    modalOpen();
+    modalOpenOrClose();
   };
 
   return (
-    <div
-      className={style.modal}
-      style={{ "--visibilidade": visibilidadeModal }}
-    >
-      <form onSubmit={onSubmitTime}>
-        <CgCloseO className={style.btnClose} onClick={() => modalOpen()} />
+    <>
+      <form className={style.newTime} onSubmit={onSubmitTime}>
         <h2>Preencha os dados para criar o novo time.</h2>
         <TextField
           label="Nome do time"
@@ -46,6 +40,6 @@ export function ModalNewTime({ modalOpen, visibilidadeModal, onSumitNewTime }) {
           <p>Criar Time</p>
         </Button>
       </form>
-    </div>
+    </>
   );
 }

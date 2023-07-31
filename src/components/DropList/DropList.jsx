@@ -20,7 +20,10 @@ export function DropList(props) {
       <BsPlusCircle
         className={style.dropList__btnAdd}
         title="Adicionar novo time"
-        onClick={() => props.modalOpen()}
+        onClick={() => {
+          props.acao("NOVO");
+          props.modalOpen();
+        }}
       />
     </div>
   );

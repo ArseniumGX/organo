@@ -3,7 +3,13 @@ import { TextField, Button, DropList } from "../";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
 
-export function Form(props) {
+export function Form({
+  onSubmit,
+  times,
+  modalVisibilidade,
+  modalOpenOrClose,
+  acao
+}) {
   const [nome, setNome] = useState("");
   const [cargo, setCargo] = useState("");
   const [imagem, setImagem] = useState("");
@@ -11,7 +17,7 @@ export function Form(props) {
 
   const onSave = (e) => {
     e.preventDefault();
-    props.onSubmit({ id: uuid(), nome, cargo, imagem, time });
+    onSubmit({ id: uuid(), nome, cargo, imagem, time });
     resetForm();
   };
 
@@ -59,9 +65,10 @@ export function Form(props) {
           required={true}
           name="time"
           label="Time"
-          itens={props.times}
-          modalVisibilidade={props.modalVisibilidade}
-          modalOpen={props.modalOpen}
+          itens={times}
+          modalVisibilidade={modalVisibilidade}
+          modalOpen={modalOpenOrClose}
+          acao={acao}
         />
         <Button>
           <p>Criar card</p>

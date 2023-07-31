@@ -7,4 +7,5 @@ export { Time } from "./Time/Time";
 export { Subtitle } from "./Subtitle/Subtitle";
 export { Card } from "./Card/Card";
 export { Footer } from "./Footer/Footer";
-export { ModalNewTime } from "./ModalNewTime/ModalNewTime";
+export { Modal } from "./Modal/Modal";
+export { NewTime } from "./NewTime/NewTime";
