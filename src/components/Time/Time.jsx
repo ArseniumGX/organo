@@ -2,7 +2,13 @@ import style from "./Time.module.scss";
 import { Card } from "../";
 import { v4 as uuid } from "uuid";
 
-export function Time({ time, colaboradores, onDelete, onChangeColor }) {
+export function Time({
+  time,
+  colaboradores,
+  onDelete,
+  onChangeColor,
+  favoriteAction
+}) {
   return (
     colaboradores.length > 0 && (
       <section
@@ -24,6 +30,8 @@ export function Time({ time, colaboradores, onDelete, onChangeColor }) {
               name={colaborador.nome}
               image={colaborador.imagem}
               cargo={colaborador.cargo}
+              favorite={colaborador.favorite}
+              favoriteAction={favoriteAction}
               bgStyle={time.color}
               onDelete={onDelete}
             />

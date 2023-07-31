@@ -1,16 +1,16 @@
-import style from "./TextField.module.scss";
+import style from "./Field.module.scss";
 
-export function TextField({
+export function Field({
   label,
   name,
   value,
   required,
-  type,
+  type = "text",
   placeholder,
   onChange
 }) {
   return (
-    <div className={style.campo_texto}>
+    <div className={style.field}>
       <label htmlFor={name}>{label}</label>
       <input
         value={value}

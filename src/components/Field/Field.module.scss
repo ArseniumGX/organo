@@ -1,4 +1,4 @@
-.campo_texto {
+.field {
   margin: 24px 0;
 
   label {
@@ -23,8 +23,20 @@
   input[type="color"] {
     padding: 0;
     margin: 0;
-    block-size: 32px;
-    inline-size: 32px;
-    appearance: text;
+    block-size: 48px;
+    inline-size: 48px;
+    appearance: none;
+    background-color: inherit;
+
+    &::-webkit-color-swatch {
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 1px 1px 3px 0px #333;
+    }
+    &::-moz-color-swatch {
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 1px 1px 3px 0px #333;
+    }
   }
 }

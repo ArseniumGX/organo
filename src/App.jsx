@@ -64,6 +64,14 @@ function App() {
     setTimes([...times, { id: uuid(), ...time }]);
   };
 
+  const favAction = (id) =>
+    setColaboradores(
+      colaboradores.map((colaborador) => {
+        if (colaborador.id === id) colaborador.favorite = !colaborador.favorite;
+        return colaborador;
+      })
+    );
+
   const deleteColaborador = (id) => {
     setColaboradores(
       colaboradores.filter((colaborador) => id !== colaborador.id)
@@ -90,7 +98,7 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("colaboradores", JSON.stringify(colaboradores));
-  }, [colaboradores.length, times.length]);
+  }, [colaboradores.length, colaboradores, times.length]);
 
   return (
     <div className="App">
@@ -123,6 +131,7 @@ function App() {
           )}
           onDelete={deleteColaborador}
           onChangeColor={changeColors}
+          favoriteAction={favAction}
         />
       ))}
       <Footer />

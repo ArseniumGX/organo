@@ -1,5 +1,5 @@
 import style from "./Form.module.scss";
-import { TextField, Button, DropList } from "../";
+import { Field, Button, DropList } from "../";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
 
@@ -17,7 +17,7 @@ export function Form({
 
   const onSave = (e) => {
     e.preventDefault();
-    onSubmit({ id: uuid(), nome, cargo, imagem, time });
+    onSubmit({ id: uuid(), nome, cargo, imagem, time, favorite: false });
     resetForm();
   };
 
@@ -32,29 +32,26 @@ export function Form({
     <section className={style.form_container}>
       <form onSubmit={onSave}>
         <h2>Preencha os dados para criar o card do colaborador.</h2>
-        <TextField
+        <Field
           value={nome}
           onChange={(e) => setNome(e)}
           required={true}
-          type="text"
           label="Nome"
           name="nome"
           placeholder="Digite seu nome"
         />
-        <TextField
+        <Field
           value={cargo}
           onChange={(e) => setCargo(e)}
           required={true}
-          type="text"
           label="Cargo"
           name="cargo"
           placeholder="Digite seu cargo"
         />
-        <TextField
+        <Field
           value={imagem}
           onChange={(e) => setImagem(e)}
           required={false}
-          type="text"
           label="Imagem"
           name="imagem"
           placeholder="Informe o endereço da imagem"

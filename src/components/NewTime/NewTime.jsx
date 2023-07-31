@@ -1,5 +1,5 @@
 import style from "./NewTime.module.scss";
-import { TextField, Button } from "../";
+import { Field, Button } from "../";
 import { useState } from "react";
 
 export function NewTime({ onSumitNewTime, modalOpenOrClose }) {
@@ -18,16 +18,15 @@ export function NewTime({ onSumitNewTime, modalOpenOrClose }) {
     <>
       <form className={style.newTime} onSubmit={onSubmitTime}>
         <h2>Preencha os dados para criar o novo time.</h2>
-        <TextField
+        <Field
           label="Nome do time"
           name="name"
           value={time.name}
           required={true}
-          type="text"
           placeholder="Digite o nome do time"
           onChange={(e) => setTime({ ...time, name: e })}
         />
-        <TextField
+        <Field
           label="Selecione a cor do time"
           name="color"
           value={time.color}
