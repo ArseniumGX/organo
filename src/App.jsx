@@ -51,6 +51,7 @@ function App() {
     }
   ]);
   const [colaboradores, setColaboradores] = useState([]);
+  const [formVisibilidade, setFormVisibilidade] = useState(false);
 
   const modalOpenOrClose = () => {
     setModalVisibilidade(modalVisibilidade === "none" ? "flex" : "none");
@@ -114,14 +115,19 @@ function App() {
           />
         )}
       </Modal>
-      <Form
-        onSubmit={(colaborador) => addColaborador(colaborador)}
-        times={times}
-        modalOpenOrClose={modalOpenOrClose}
-        modalVisibilidade={modalVisibilidade}
-        acao={setAcao}
+      {formVisibilidade && (
+        <Form
+          onSubmit={(colaborador) => addColaborador(colaborador)}
+          times={times}
+          modalOpenOrClose={modalOpenOrClose}
+          modalVisibilidade={modalVisibilidade}
+          acao={setAcao}
+        />
+      )}
+      <Subtitle
+        setFormVisibilidade={setFormVisibilidade}
+        formVisibilidade={formVisibilidade}
       />
-      <Subtitle />
       {times.map((time) => (
         <Time
           key={time.id}
