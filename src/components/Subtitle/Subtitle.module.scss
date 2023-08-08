@@ -1,8 +1,15 @@
 .subtitle {
+  position: relative;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
   margin-bottom: 24px;
+
+  img {
+    position: absolute;
+    right: 100px;
+    cursor: pointer;
+  }
 
   h2 {
     color: #6278f7;
